@@ -1,0 +1,5 @@
+TransactionType: USDT @ THB
+Additional Answer: SELL
+Minimum price: 25.53
+Median price: 35.38
+Maximum price: 35.39 

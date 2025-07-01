@@ -1,0 +1,5 @@
+TransactionType: USDT @ MMK
+Additional Answer: BUY
+Minimum price: 3,393
+Median price: 3,396
+Maximum price: 4,499 

@@ -1,0 +1,27 @@
+# Node.js files and folders
+index.js
+package.json
+package-lock.json
+node_modules/
+
+# Ignore all .txt and .ini files except sample files
+table_data.txt
+buy_answers.txt
+sell_answers.txt
+custom_text.txt
+custom_text1.txt
+*.txt
+!*.sample.txt
+config.ini
+*.ini
+!config.sample.ini
+
+# Ignore all image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+
+.DS_Store
