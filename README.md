@@ -1,96 +1,107 @@
-  <img width="100%" src="https://i.imgur.com/jlkb0KS.gif">
+# P2P-Exchange-Notifier (KyatMax Exchange Bot)
 
-# Binancio - Binance P2P Bot
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-> **WARNING:**
-> This project requires API credentials for Telegram and Facebook. **Never commit your real credentials to public repositories.**
-> 
-> Before running, set your own credentials in `config.ini` as shown below:
-> 
-> ```ini
-> [BotSettings]
-> token = YOUR_TELEGRAM_BOT_TOKEN
-> chatid = YOUR_TELEGRAM_CHAT_ID
-> 
-> [Facebook]
-> page_id = YOUR_FACEBOOK_PAGE_ID
-> access_token = YOUR_FACEBOOK_ACCESS_TOKEN
-> ```
+Automate the calculation, formatting, and posting of cryptocurrency exchange rates (USDT/MMK, USDT/THB) to Telegram and Facebook. This project is designed for currency exchange businesses and individuals who want to share up-to-date rates with their audience automatically.
 
-Binancio calculates median price of any crypto-asset in fiat currency on Binance's p2p exchange right on your console.
+---
 
-## :zap: Usage
+## Features
+- Fetches P2P exchange rates from Binance (via Node.js, not included here)
+- Calculates rates with profit margins and tiered pricing
+- Generates formatted text and image tables
+- Posts rates automatically to Telegram and Facebook (text and image)
+- Highly configurable via simple config and text files
+- Sample config and data files provided for easy setup
 
-##### Interactive mode
+---
 
-```sh
-npx binancio
-```
+## Project Structure
+- **Python scripts**: All automation, calculation, and posting logic
+- **Sample config/data files**: `.sample.txt` and `.sample.ini` files for safe public sharing
+- **No sensitive data or images**: Real data and credentials are excluded by `.gitignore`
 
-##### Using custom options
+---
 
-```sh
-npx binancio --ticker ETH --fiat USD --operation BUY
-```
+## Setup
 
-##### Overall options
+- **Python version required:** 3.8 or higher
 
-```sh
-npx binancio --help
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/KyawZaw-cmd/P2P-Exchange-Notifier.git
+   cd P2P-Exchange-Notifier
+   ```
 
-```sh
-Options
-  -t, --ticker      <type> Crypto ticker (choices: "USDT", "BTC", "BNB", "BUSD", "ETH", "DAI")
-  -f, --fiat        <type> Fiat currency (choices: "ARS", "EUR", "USD", "AED", "AUD", "BDT", ...)
-  -o, --operation   <type> Operation type (choices: "BUY", "SELL")
-  -p, --pay-types   <type> Payment method (choices: "*", "AirTM", "Bank Transfer" ...) [Depends on localization]
-  -h, --help display help for command
-```
+2. **Install Python dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## :cloud: Installation
+3. **Prepare your configuration and data files**
+   - Copy the sample files and rename them (remove `.sample`):
+     ```bash
+     cp config.sample.ini config.ini
+     cp buy_answers.sample.txt buy_answers.txt
+     cp sell_answers.sample.txt sell_answers.txt
+     cp custom_text.sample.txt custom_text.txt
+     cp custom_text1.sample.txt custom_text1.txt
+     ```
+   - Edit `config.ini` and the `.txt` files with your real credentials and custom text.
 
-```sh
-# Using npm
-npm install -g binancio
+4. **Add your own image template**
+   - Place your `original_image.jpg` in the project root (used for image generation).
 
-# Using yarn
-yarn global add binancio
-```
+---
 
-## Roadmap
+## Usage
 
-- [x] Deprecate scrapper and use Binance Public API.
-- [x] CLI Semantic API (eg. npx binancio --ticker ETH --fiat ARS --type BUY).
-- [ ] Save output in json format.
+- **Generate and post rates to Telegram (text):**
+  ```bash
+  python textbot.py
+  ```
+- **Generate and post rates to Facebook (text):**
+  ```bash
+  python fbpost.py
+  ```
+- **Generate image with rates:**
+  ```bash
+  python photogenerate.py
+  ```
+- **Post image to Telegram:**
+  ```bash
+  python telephoto.py
+  ```
+- **Post image to Facebook:**
+  ```bash
+  python fbphoto.py
+  ```
+- **Automate the full workflow:**
+  - See scripts like `fbautopost.py`, `fbautophoto.py`, `tautopost.py`, `tautophoto.py`
 
-Do you have something in mind? [Create an issue!](https://github.com/sanchezmarcos/binance-p2p-bot/issues/new)
+---
 
-## :package: Dependencies
+## Configuration
 
-- [inquirer](https://github.com/SBoudrias/Inquirer.js) - Common interactive command line user interfaces
-- [commander](https://github.com/tj/commander.js/) - Node.js command-line interfaces made easy
-- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
+- **config.ini**: API tokens and IDs for Telegram and Facebook
+- **buy_answers.txt / sell_answers.txt**: Median price data (from Binance P2P)
+- **custom_text.txt / custom_text1.txt**: Custom header/footer for your posts
 
-## Support
-In case you want to support Binancio development.
- 
-#### Gumroad link:
-[https://sanchezmarcosme.gumroad.com/l/binancio](https://sanchezmarcosme.gumroad.com/l/binancio)
+> **Never commit your real config or data files to public repositories! Use the provided sample files for sharing.**
 
-#### Ξ Ethereum address:
+---
 
-```
-0xaA48b4238C0fF0112977395B247C0341acB8809F
-```
+## Security
+- All sensitive data is loaded from config files, not hardcoded
+- `.gitignore` ensures no real data, credentials, or images are uploaded
 
-## :scroll: License
+---
 
-[MIT][license] © [Sanchez Marcos][site]
+## License
+MIT License
 
-<p align="center">
-  <img width="50%" src="https://i.imgur.com/EvaP4Ye.png">
-</p>
+---
 
-[license]: /LICENSE
-[site]: https://sanchezmarcos.me
+## Credits
+Developed by KyatMax Exchange. Inspired by the needs of currency exchange automation.
